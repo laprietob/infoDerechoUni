@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de Línea de Pobreza | InfoDerecho Colombia</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <meta name="theme-color" content="#1E4D8C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__bar">
+      <a class="logo" href="../index.html">
+        <span class="logo__icon"><img src="../assets/logo/logo-mark.svg" alt=""></span>
+        <span class="logo__text">
+          <span class="logo__name">InfoDerecho</span>
+          <span class="logo__sub">COLOMBIA</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <img src="../assets/icons/menu.svg" alt="">
+      </button>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__tab" href="../index.html">Inicio</a>
+      <a class="nav__tab" href="checklist.html">Checklist de Ayudas</a>
+      <a class="nav__tab" href="programas.html">Directorio de Programas</a>
+      <a class="nav__tab is-active" href="calculadora.html" aria-current="page">Calculadora de Pobreza</a>
+      <a class="nav__tab" href="acerca.html">Sobre el Proyecto</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page">
+      <div class="page__intro">
+        <h1>Calculadora de Línea de Pobreza</h1>
+        <p>De acuerdo con el DANE, un hogar colombiano se encuentra bajo el umbral de pobreza monetaria extrema si el ingreso promedio por miembro es menor al costo básico de subsistencia. Realice un cálculo estimado instantáneo.</p>
+      </div>
+
+      <div class="page__card">
+        <form class="card form" id="calc-form">
+          <h2 class="form__title">Ingrese los valores de su hogar</h2>
+          <div class="form__grid">
+            <div class="field">
+              <label class="field__label" for="calc-income">Ingreso total del hogar al mes<span class="d-only"> (Neto)</span></label>
+              <div class="control">
+                <span class="control__prefix"><span class="m-only">$</span><span class="d-only">$ COP</span></span>
+                <input id="calc-income" inputmode="numeric" value="700.000" autocomplete="off">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="calc-members">Número total de miembros del hogar</label>
+              <div class="control control--select">
+                <select id="calc-members">
+                  <option value="1">1 persona</option>
+                  <option value="2">2 personas</option>
+                  <option value="3">3 personas</option>
+                  <option value="4" selected>4 personas</option>
+                  <option value="5">5 personas</option>
+                  <option value="6">6 personas</option>
+                  <option value="7">7 personas</option>
+                  <option value="8">8 personas</option>
+                  <option value="9">9 personas</option>
+                  <option value="10">10 personas</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn--block" type="submit"><img src="../assets/icons/calculator.svg" alt=""><span>Calcular Estado del Hogar</span></button>
+        </form>
+
+        <section class="result" id="calc-result" aria-live="polite">
+          <div class="result__header">
+            <img src="../assets/icons/check-circle.svg" alt="">
+            <h2 class="result__title">Resultado de la Simulación</h2>
+          </div>
+          <div>
+            <p class="result__label"><span class="d-only">Ingreso estimado mensual por persona en su hogar:</span><span class="m-only">Ingreso por persona en su hogar:</span></p>
+            <p class="result__amount" id="calc-amount">$175.000 COP</p>
+          </div>
+          <hr class="result__rule">
+          <div class="result__msg">
+            <h3 id="calc-message-title">Su hogar se encuentra por debajo del umbral oficial de pobreza extrema.</h3>
+            <p id="calc-message-body">El costo de vida mínimo de subsistencia alimentaria por persona se calcula oficialmente por debajo de la línea establecida. Le recomendamos consultar de manera prioritaria el directorio de programas de ayuda del Estado.</p>
+          </div>
+          <a class="btn btn--block" href="programas.html"><span class="d-only">Ver Programas de Asistencia Disponibles para su Perfil</span><span class="m-only">Ver Programas Disponibles</span></a>
+        </section>
+
+        <div class="notice">
+          <img src="../assets/icons/circle-x.svg" alt="">
+          <p><strong>Nota Informativa:</strong> Este cálculo constituye una simulación con base en promedios estadísticos nacionales de la Gran Encuesta Integrada de Hogares. No reemplaza los censos oficiales del Sisbén IV ni garantiza la adjudicación directa de ningún subsidio por parte del Departamento para la Prosperidad Social.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__brand-name">InfoDerecho Colombia</p>
+        <p>Información clara, gratuita e independiente sobre programas sociales del Estado colombiano. Facilitamos el entendimiento de sus derechos fundamentales.</p>
+      </div>
+      <hr class="footer__rule footer__rule--mid">
+      <div class="footer__sources">
+        <p class="footer__sources-title">FUENTES OFICIALES UTILIZADAS:</p>
+        <p>DANE (Línea de Pobreza Monetaria) · Departamento de Prosperidad Social (DPS) · Departamento Nacional de Planeación (DNP) · SISBÉN IV.</p>
+      </div>
+    </div>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__legal">Atención: Este es un portal informativo e independiente. No realizamos trámites de inscripción ni somos un canal oficial del Gobierno de Colombia.</p>
+      <p class="footer__copy">© 2026 InfoDerecho Colombia.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

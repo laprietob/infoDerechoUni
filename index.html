@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InfoDerecho Colombia</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo/favicon.svg">
+  <meta name="theme-color" content="#1E4D8C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>
+    /* Aplica la preferencia de accesibilidad antes de pintar, para evitar parpadeos. */
+    try {
+      const preferencia = JSON.parse(localStorage.getItem("infoderecho-a11y") || "{}");
+      const escala = [0.9, 1, 1.1, 1.2, 1.3, 1.4][preferencia.step];
+      if (escala) document.documentElement.style.setProperty("--text-scale", escala);
+      if (preferencia.contrast) document.documentElement.classList.add("high-contrast");
+    } catch (e) {}
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <header class="header header--sticky">
+    <div class="header__bar">
+      <a class="logo" href="#inicio">
+        <span class="logo__icon"><img src="assets/logo/logo-mark.svg" alt=""></span>
+        <span class="logo__text">
+          <span class="logo__name">InfoDerecho</span>
+          <span class="logo__sub">COLOMBIA</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <img src="assets/icons/menu.svg" alt="">
+      </button>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__tab is-active" href="#inicio" aria-current="page">Inicio</a>
+      <a class="nav__tab" href="#checklist">Checklist de Ayudas</a>
+      <a class="nav__tab" href="#programas">Directorio de Programas</a>
+      <a class="nav__tab" href="#calculadora">Calculadora de Pobreza</a>
+      <a class="nav__tab" href="#acerca">Sobre el Proyecto</a>
+    </nav>
+    <div class="a11y">
+      <button class="a11y__toggle" id="a11y-toggle" type="button" aria-label="Accesibilidad" aria-haspopup="true" aria-expanded="false" aria-controls="a11y-menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19 9 5l6 14M5.5 14h7"/><path d="M18 5v6M15 8h6"/></svg>
+        <span class="a11y__label">Accesibilidad</span>
+        <svg class="a11y__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="a11y__menu" id="a11y-menu" role="group" aria-label="Opciones de accesibilidad" hidden>
+        <button class="a11y__item" type="button" data-a11y="increase"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V6h10v3M8 6v11M6 17h4"/><path d="M18 4v6M15 7h6"/></svg><span>Aumentar texto</span></button>
+        <button class="a11y__item" type="button" data-a11y="decrease"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V6h10v3M8 6v11M6 17h4"/><path d="M15 7h6"/></svg><span>Disminuir texto</span></button>
+        <button class="a11y__item" type="button" data-a11y="contrast" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg><span>Alto contraste</span></button>
+        <button class="a11y__item" type="button" data-a11y="reset"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg><span>Restablecer</span></button>
+      </div>
+      <p class="sr-only" id="a11y-status" role="status" aria-live="polite"></p>
+    </div>
+  </header>
+
+  <main>
+    <div class="section" id="inicio">
+    <section class="hero">
+      <div class="hero__content">
+        <h1>Descubra los subsidios y apoyos del Estado colombiano</h1>
+        <p>Le ayudamos a consultar de forma sencilla, anónima e independiente si su hogar califica para programas de salud, educación, alimentación y vivienda.</p>
+        <div class="hero__ctas show-desktop">
+          <a class="btn" href="#checklist"><img src="assets/icons/list-check-blue.svg" alt=""><span>Empezar Checklist de Ayudas</span></a>
+          <a class="btn" href="#programas"><img src="assets/icons/folder-archive-blue.svg" alt=""><span>Ver Programas Disponibles</span></a>
+          <a class="btn" href="#calculadora"><img src="assets/icons/calculator-blue.svg" alt=""><span>Calcular Línea de Pobreza</span></a>
+        </div>
+      </div>
+      <div class="hero__image-box">
+        <picture>
+          <source media="(min-width: 960px)" srcset="assets/img/hero-desktop.png">
+          <img src="assets/img/hero-mobile.png" alt="Familia colombiana en su hogar" loading="lazy">
+        </picture>
+      </div>
+    </section>
+
+    <section class="shortcuts">
+      <h2>Herramientas gratuitas</h2>
+      <a class="btn" href="#checklist"><img src="assets/icons/list-check.svg" alt=""><span>Empezar Checklist de Ayudas</span></a>
+      <a class="btn" href="#programas"><img src="assets/icons/folder-archive.svg" alt=""><span>Ver Programas Disponibles</span></a>
+      <a class="btn" href="#calculadora"><img src="assets/icons/calculator.svg" alt=""><span>Calcular Línea de Pobreza</span></a>
+    </section>
+
+    <section class="features">
+      <h2>¿Cómo funciona InfoDerecho?</h2>
+      <div class="features__row">
+        <article class="card feature">
+          <div class="feature__head">
+            <span class="feature__icon"><img src="assets/icons/check-circle.svg" alt=""></span>
+            <h3>1. Ingrese datos básicos</h3>
+          </div>
+          <p>Responda un breve cuestionario completamente anónimo sobre la composición de su hogar, municipio y nivel socioeconómico.</p>
+        </article>
+        <article class="card feature">
+          <div class="feature__head">
+            <span class="feature__icon"><img src="assets/icons/shield-alert.svg" alt=""></span>
+            <h3>2. Filtro automático</h3>
+          </div>
+          <p>Calculamos al instante cuáles programas de asistencia del Estado (Renta Ciudadana, Devolución del IVA, etc.) se adaptan a su situación.</p>
+        </article>
+        <article class="card feature">
+          <div class="feature__head">
+            <span class="feature__icon"><img src="assets/icons/map-pin.svg" alt=""></span>
+            <h3>3. Guía de postulación</h3>
+          </div>
+          <p>Le indicamos paso a paso los requisitos exactos, los canales oficiales de contacto y la ubicación de las oficinas de su alcaldía local.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="trust">
+      <span class="trust__icon"><img src="assets/icons/shield-check.svg" alt=""></span>
+      <div>
+        <h3>Fuentes de Información Oficiales y Actualizadas</h3>
+        <p>Toda la normativa y los umbrales de elegibilidad se actualizan periódicamente con base en las publicaciones oficiales del DANE, DNP y el Departamento para la Prosperidad Social de Colombia.</p>
+      </div>
+    </section>
+  
+    </div>
+
+    <div class="section" id="checklist">
+    <div class="page">
+      <div class="page__intro">
+        <h1>Checklist de Elegibilidad</h1>
+        <p>Esta herramienta interactiva evalúa de forma confidencial si su grupo familiar cumple con las condiciones básicas para acceder a los principales programas sociales del Gobierno Nacional.</p>
+      </div>
+
+      <div class="page__card">
+        <div class="progress">
+          <div class="progress__row">
+            <strong>Paso 2 de 4<span class="d-only">: Datos Socioeconómicos</span></strong>
+            <span>50% Completado</span>
+          </div>
+          <div class="progress__track"><div class="progress__fill"></div></div>
+        </div>
+        <hr class="divider">
+
+        <form class="card form" id="checklist-form">
+          <h2 class="form__title form__title--step">Paso 2: Composición del hogar e ingresos</h2>
+          <div class="form__grid">
+            <div class="field">
+              <label class="field__label" for="check-age">Rango de edad del jefe de hogar</label>
+              <div class="control control--select">
+                <select id="check-age">
+                  <option value="<18">Menos de 18 años</option>
+                  <option value="18-29">Entre 18 y 29 años</option>
+                  <option value="30-59" selected>Entre 30 y 59 años</option>
+                  <option value="60+">60 años o más</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="check-income">Ingreso mensual total del hogar</label>
+              <div class="control">
+                <span class="control__prefix"><span class="m-only">$</span><span class="d-only">$ COP</span></span>
+                <input id="check-income" inputmode="numeric" value="450.000" autocomplete="off">
+              </div>
+              <p class="field__hint">Sume el ingreso de todas las personas que aportan en la vivienda.</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="check-minors">Cantidad de menores de 18 años</label>
+              <div class="control control--select">
+                <select id="check-minors">
+                  <option value="0">Ningún menor de edad</option>
+                  <option value="1">1 menor de edad</option>
+                  <option value="2" selected>2 menores de edad</option>
+                  <option value="3">3 o más menores de edad</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="check-dep">Departamento de residencia</label>
+              <div class="control control--select">
+                <select id="check-dep">
+              <option>Amazonas</option>
+              <option>Antioquia</option>
+              <option>Arauca</option>
+              <option>Atlántico</option>
+              <option>Bogotá D.C.</option>
+              <option>Bolívar</option>
+              <option>Boyacá</option>
+              <option>Caldas</option>
+              <option>Caquetá</option>
+              <option>Casanare</option>
+              <option>Cauca</option>
+              <option>Cesar</option>
+              <option selected>Chocó (Istmina)</option>
+              <option>Córdoba</option>
+              <option>Cundinamarca</option>
+              <option>Guainía</option>
+              <option>Guaviare</option>
+              <option>Huila</option>
+              <option>La Guajira</option>
+              <option>Magdalena</option>
+              <option>Meta</option>
+              <option>Nariño</option>
+              <option>Norte de Santander</option>
+              <option>Putumayo</option>
+              <option>Quindío</option>
+              <option>Risaralda</option>
+              <option>San Andrés y Providencia</option>
+              <option>Santander</option>
+              <option>Sucre</option>
+              <option>Tolima</option>
+              <option>Valle del Cauca</option>
+              <option>Vaupés</option>
+              <option>Vichada</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--outline" type="button" id="check-back">Volver Atrás</button>
+            <button class="btn btn--next" type="submit"><span>Siguiente Paso</span><img src="assets/icons/chevron-right.svg" alt=""></button>
+          </div>
+        </form>
+
+        <section class="result" id="check-result" hidden>
+          <div class="result__header">
+            <img src="assets/icons/check-circle.svg" alt="">
+            <h2 class="result__title" id="check-result-title"></h2>
+          </div>
+          <ul class="result__list" id="check-result-list"></ul>
+          <a class="btn btn--block" href="#programas">Ver detalles en el Directorio de Programas</a>
+        </section>
+
+        <div class="notice">
+          <img src="assets/icons/circle-x.svg" alt="">
+          <p><strong>Garantía de Privacidad:</strong> No guardamos su información personal en nuestros servidores ni la compartimos con terceros. Sus respuestas son procesadas de forma temporal estrictamente para simular la elegibilidad de subsidios del Estado.</p>
+        </div>
+      </div>
+    </div>
+  
+    </div>
+
+    <div class="section" id="programas">
+    <section class="search">
+      <h1>Directorio de Apoyos Estatales</h1>
+      <p class="search__intro">Consulte de manera estructurada los requisitos, entidades responsables y guías de postulación para todos los programas de asistencia vigentes.</p>
+      <div class="search__controls">
+        <label class="search__bar">
+          <img src="assets/icons/search.svg" alt="">
+          <input id="program-search" type="search" placeholder="Buscar programas por palabra clave (ej. SISBÉN, Adulto Mayor)..." autocomplete="off">
+        </label>
+        <div class="chips" role="group" aria-label="Filtrar programas">
+          <button class="chip is-active" type="button" data-filter="all"><span class="d-only">Todos los Programas</span><span class="m-only">Todos</span> (6)</button>
+          <button class="chip" type="button" data-filter="extrema-pobreza">Extrema Pobreza</button>
+          <button class="chip" type="button" data-filter="adulto-mayor">Adulto Mayor</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="programs">
+      <article class="card program" data-tags="extrema-pobreza">
+        <div>
+          <h2>Renta Ciudadana (Familias en Acción)</h2>
+          <p class="program__entity">ENTIDAD: Prosperidad Social</p>
+        </div>
+        <p class="program__desc">Apoyo económico mensual diseñado para asegurar la alimentación, salud y educación de niños, niñas y adolescentes que viven en condiciones de extrema pobreza.</p>
+        <div class="program__req"><img src="assets/icons/check-check.svg" alt=""><p>SISBÉN IV (Grupo A) · Hogares vulnerables con menores de 18 años priorizados.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="extrema-pobreza">
+        <div>
+          <h2>Devolución del IVA</h2>
+          <p class="program__entity">ENTIDAD: Prosperidad Social / DNP</p>
+        </div>
+        <p class="program__desc">Transferencia monetaria bimestral orientada a aliviar el impacto del impuesto sobre las ventas (IVA) en los hogares de menores recursos económicos en todo el país.</p>
+        <div class="program__req"><img src="assets/icons/check-check.svg" alt=""><p>SISBÉN IV (Grupos A y B) · Registro unificado de beneficiarios de programas sociales.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="extrema-pobreza adulto-mayor">
+        <div>
+          <h2>Colombia Mayor</h2>
+          <p class="program__entity">ENTIDAD: Prosperidad Social</p>
+        </div>
+        <p class="program__desc">Subsidio económico mensual destinado a adultos mayores en estado de vulnerabilidad o desamparo, que no cuentan con una pensión y viven en extrema pobreza.</p>
+        <div class="program__req"><img src="assets/icons/check-check.svg" alt=""><p>Edad mínima (Mujeres: 54 años, Hombres: 59 años) · No poseer pensión ni rentas mensuales.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="">
+        <div>
+          <h2>Jóvenes en Paz</h2>
+          <p class="program__entity">ENTIDAD: Ministerio de la Igualdad</p>
+        </div>
+        <p class="program__desc">Programa integral de transferencias monetarias y acompañamiento formativo enfocado en jóvenes de zonas de alta vulnerabilidad y conflictividad social.</p>
+        <div class="program__req"><img src="assets/icons/check-check.svg" alt=""><p>Jóvenes entre 12 y 28 años · Compromiso de participación en proyectos comunitarios.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="">
+        <div>
+          <h2>Mi Casa Ya</h2>
+          <p class="program__entity">ENTIDAD: Ministerio de Vivienda</p>
+        </div>
+        <p class="program__desc">Subsidio directo destinado a facilitar el pago de la cuota inicial y cobertura de la tasa de interés para la adquisición de vivienda de interés social (VIS) urbana o rural.</p>
+        <div class="program__req"><img src="assets/icons/check-check.svg" alt=""><p>Ingresos inferiores a 4 SMMLV · No poseer vivienda propia en ningún lugar del país.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="">
+        <div>
+          <h2>Jóvenes Propietarios</h2>
+          <p class="program__entity">ENTIDAD: Fondo Nacional del Ahorro / MinVivienda</p>
+        </div>
+        <p class="program__desc">Programa estatal que ofrece tasas de interés preferenciales y condiciones de financiación sumamente favorables para que jóvenes adquieran su primera vivienda.</p>
+        <div class="program__req"><img src="assets/icons/check-check.svg" alt=""><p>Jóvenes entre 18 y 28 años · Ingresos menores a 2 SMMLV · Vinculación al FNA.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <p class="programs__empty" id="programs-empty" hidden>No encontramos programas que coincidan con su búsqueda.</p>
+    </section>
+  
+    </div>
+
+    <div class="section" id="calculadora">
+    <div class="page">
+      <div class="page__intro">
+        <h1>Calculadora de Línea de Pobreza</h1>
+        <p>De acuerdo con el DANE, un hogar colombiano se encuentra bajo el umbral de pobreza monetaria extrema si el ingreso promedio por miembro es menor al costo básico de subsistencia. Realice un cálculo estimado instantáneo.</p>
+      </div>
+
+      <div class="page__card">
+        <form class="card form" id="calc-form">
+          <h2 class="form__title">Ingrese los valores de su hogar</h2>
+          <div class="form__grid">
+            <div class="field">
+              <label class="field__label" for="calc-income">Ingreso total del hogar al mes<span class="d-only"> (Neto)</span></label>
+              <div class="control">
+                <span class="control__prefix"><span class="m-only">$</span><span class="d-only">$ COP</span></span>
+                <input id="calc-income" inputmode="numeric" value="700.000" autocomplete="off">
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="calc-members">Número total de miembros del hogar</label>
+              <div class="control control--select">
+                <select id="calc-members">
+                  <option value="1">1 persona</option>
+                  <option value="2">2 personas</option>
+                  <option value="3">3 personas</option>
+                  <option value="4" selected>4 personas</option>
+                  <option value="5">5 personas</option>
+                  <option value="6">6 personas</option>
+                  <option value="7">7 personas</option>
+                  <option value="8">8 personas</option>
+                  <option value="9">9 personas</option>
+                  <option value="10">10 personas</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn--block" type="submit"><img src="assets/icons/calculator.svg" alt=""><span>Calcular Estado del Hogar</span></button>
+        </form>
+
+        <section class="result" id="calc-result" aria-live="polite">
+          <div class="result__header">
+            <img src="assets/icons/check-circle.svg" alt="">
+            <h2 class="result__title">Resultado de la Simulación</h2>
+          </div>
+          <div>
+            <p class="result__label"><span class="d-only">Ingreso estimado mensual por persona en su hogar:</span><span class="m-only">Ingreso por persona en su hogar:</span></p>
+            <p class="result__amount" id="calc-amount">$175.000 COP</p>
+          </div>
+          <hr class="result__rule">
+          <div class="result__msg">
+            <h3 id="calc-message-title">Su hogar se encuentra por debajo del umbral oficial de pobreza extrema.</h3>
+            <p id="calc-message-body">El costo de vida mínimo de subsistencia alimentaria por persona se calcula oficialmente por debajo de la línea establecida. Le recomendamos consultar de manera prioritaria el directorio de programas de ayuda del Estado.</p>
+          </div>
+          <a class="btn btn--block" href="#programas"><span class="d-only">Ver Programas de Asistencia Disponibles para su Perfil</span><span class="m-only">Ver Programas Disponibles</span></a>
+        </section>
+
+        <div class="notice">
+          <img src="assets/icons/circle-x.svg" alt="">
+          <p><strong>Nota Informativa:</strong> Este cálculo constituye una simulación con base en promedios estadísticos nacionales de la Gran Encuesta Integrada de Hogares. No reemplaza los censos oficiales del Sisbén IV ni garantiza la adjudicación directa de ningún subsidio por parte del Departamento para la Prosperidad Social.</p>
+        </div>
+      </div>
+    </div>
+  
+    </div>
+
+    <div class="section" id="acerca">
+    <div class="about">
+      <div class="about__col">
+        <div class="about__text">
+          <h1>Sobre el Proyecto</h1>
+          <p>InfoDerecho Colombia nace con el firme propósito de democratizar el acceso a la información pública, social y jurídica en el país. Facilitamos que cualquier ciudadano, sin importar su ubicación, conozca las herramientas de asistencia que ofrece el Estado.</p>
+          <p>La falta de claridad informativa y las complejidades técnicas constituyen una barrera invisible para las familias de áreas rurales y municipios de difícil acceso. Con este portal, buscamos alinear el acceso a la información con el Objetivo de Desarrollo Sostenible (ODS 16) de Paz, Justicia e Instituciones Sólidas.</p>
+        </div>
+
+        <div class="about__image">
+          <picture>
+            <source media="(min-width: 960px)" srcset="assets/img/rural-desktop.png">
+            <img src="assets/img/rural-mobile.png" alt="Escuela rural en un paisaje montañoso de Colombia" loading="lazy">
+          </picture>
+        </div>
+
+        <section class="card contact">
+          <h2>¿Tiene dudas o sugerencias?</h2>
+          <p>Queremos mantener este portal al día. Si encuentra información desactualizada de su municipio o alcaldía local, por favor contáctenos.</p>
+          <a class="btn" href="#"><img src="assets/icons/mail.svg" alt=""><span>Contactar al Equipo</span></a>
+        </section>
+      </div>
+
+      <div class="about__col about__col--side">
+        <section class="sources">
+          <h2>Nuestras Fuentes Oficiales</h2>
+          <div class="sources__list">
+          <article class="card source">
+            <h3>DANE - Departamento Administrativo Nacional de Estadística</h3>
+            <p>De aquí extraemos anualmente la actualización de la Línea de Pobreza Monetaria por departamento y tipología del hogar.</p>
+          </article>
+          <article class="card source">
+            <h3>Prosperidad Social (DPS)</h3>
+            <p>Entidad responsable de la ejecución y requisitos operativos de subsidios vitales como Renta Ciudadana y Devolución del IVA.</p>
+          </article>
+          <article class="card source">
+            <h3>Departamento Nacional de Planeación (DNP)</h3>
+            <p>Organismo que rige la clasificación técnica Sisbén IV, utilizado para priorizar a los beneficiarios de planes gubernamentales.</p>
+          </article>
+          </div>
+        </section>
+
+        <aside class="warning">
+          <h3>Advertencia Importante</h3>
+          <p>Este sitio web es exclusivamente de carácter informativo e independiente. No realiza inscripciones, no asigna subsidios de forma directa, ni solicita claves de acceso de canales oficiales del Gobierno de Colombia.</p>
+        </aside>
+      </div>
+    </div>
+  
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__brand-name">InfoDerecho Colombia</p>
+        <p>Información clara, gratuita e independiente sobre programas sociales del Estado colombiano. Facilitamos el entendimiento de sus derechos fundamentales.</p>
+      </div>
+      <hr class="footer__rule footer__rule--mid">
+      <div class="footer__sources">
+        <p class="footer__sources-title">FUENTES OFICIALES UTILIZADAS:</p>
+        <p>DANE (Línea de Pobreza Monetaria) · Departamento de Prosperidad Social (DPS) · Departamento Nacional de Planeación (DNP) · SISBÉN IV.</p>
+      </div>
+    </div>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__legal">Atención: Este es un portal informativo e independiente. No realizamos trámites de inscripción ni somos un canal oficial del Gobierno de Colombia.</p>
+      <p class="footer__copy">© 2026 InfoDerecho Colombia.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

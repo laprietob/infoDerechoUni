@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checklist de Elegibilidad | InfoDerecho Colombia</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <meta name="theme-color" content="#1E4D8C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__bar">
+      <a class="logo" href="../index.html">
+        <span class="logo__icon"><img src="../assets/logo/logo-mark.svg" alt=""></span>
+        <span class="logo__text">
+          <span class="logo__name">InfoDerecho</span>
+          <span class="logo__sub">COLOMBIA</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <img src="../assets/icons/menu.svg" alt="">
+      </button>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__tab" href="../index.html">Inicio</a>
+      <a class="nav__tab is-active" href="checklist.html" aria-current="page">Checklist de Ayudas</a>
+      <a class="nav__tab" href="programas.html">Directorio de Programas</a>
+      <a class="nav__tab" href="calculadora.html">Calculadora de Pobreza</a>
+      <a class="nav__tab" href="acerca.html">Sobre el Proyecto</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="page">
+      <div class="page__intro">
+        <h1>Checklist de Elegibilidad</h1>
+        <p>Esta herramienta interactiva evalúa de forma confidencial si su grupo familiar cumple con las condiciones básicas para acceder a los principales programas sociales del Gobierno Nacional.</p>
+      </div>
+
+      <div class="page__card">
+        <div class="progress">
+          <div class="progress__row">
+            <strong>Paso 2 de 4<span class="d-only">: Datos Socioeconómicos</span></strong>
+            <span>50% Completado</span>
+          </div>
+          <div class="progress__track"><div class="progress__fill"></div></div>
+        </div>
+        <hr class="divider">
+
+        <form class="card form" id="checklist-form">
+          <h2 class="form__title form__title--step">Paso 2: Composición del hogar e ingresos</h2>
+          <div class="form__grid">
+            <div class="field">
+              <label class="field__label" for="check-age">Rango de edad del jefe de hogar</label>
+              <div class="control control--select">
+                <select id="check-age">
+                  <option value="<18">Menos de 18 años</option>
+                  <option value="18-29">Entre 18 y 29 años</option>
+                  <option value="30-59" selected>Entre 30 y 59 años</option>
+                  <option value="60+">60 años o más</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="check-income">Ingreso mensual total del hogar</label>
+              <div class="control">
+                <span class="control__prefix"><span class="m-only">$</span><span class="d-only">$ COP</span></span>
+                <input id="check-income" inputmode="numeric" value="450.000" autocomplete="off">
+              </div>
+              <p class="field__hint">Sume el ingreso de todas las personas que aportan en la vivienda.</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="check-minors">Cantidad de menores de 18 años</label>
+              <div class="control control--select">
+                <select id="check-minors">
+                  <option value="0">Ningún menor de edad</option>
+                  <option value="1">1 menor de edad</option>
+                  <option value="2" selected>2 menores de edad</option>
+                  <option value="3">3 o más menores de edad</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label class="field__label" for="check-dep">Departamento de residencia</label>
+              <div class="control control--select">
+                <select id="check-dep">
+              <option>Amazonas</option>
+              <option>Antioquia</option>
+              <option>Arauca</option>
+              <option>Atlántico</option>
+              <option>Bogotá D.C.</option>
+              <option>Bolívar</option>
+              <option>Boyacá</option>
+              <option>Caldas</option>
+              <option>Caquetá</option>
+              <option>Casanare</option>
+              <option>Cauca</option>
+              <option>Cesar</option>
+              <option selected>Chocó (Istmina)</option>
+              <option>Córdoba</option>
+              <option>Cundinamarca</option>
+              <option>Guainía</option>
+              <option>Guaviare</option>
+              <option>Huila</option>
+              <option>La Guajira</option>
+              <option>Magdalena</option>
+              <option>Meta</option>
+              <option>Nariño</option>
+              <option>Norte de Santander</option>
+              <option>Putumayo</option>
+              <option>Quindío</option>
+              <option>Risaralda</option>
+              <option>San Andrés y Providencia</option>
+              <option>Santander</option>
+              <option>Sucre</option>
+              <option>Tolima</option>
+              <option>Valle del Cauca</option>
+              <option>Vaupés</option>
+              <option>Vichada</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form__actions">
+            <button class="btn btn--outline" type="button" id="check-back">Volver Atrás</button>
+            <button class="btn btn--next" type="submit"><span>Siguiente Paso</span><img src="../assets/icons/chevron-right.svg" alt=""></button>
+          </div>
+        </form>
+
+        <section class="result" id="check-result" hidden>
+          <div class="result__header">
+            <img src="../assets/icons/check-circle.svg" alt="">
+            <h2 class="result__title" id="check-result-title"></h2>
+          </div>
+          <ul class="result__list" id="check-result-list"></ul>
+          <a class="btn btn--block" href="programas.html">Ver detalles en el Directorio de Programas</a>
+        </section>
+
+        <div class="notice">
+          <img src="../assets/icons/circle-x.svg" alt="">
+          <p><strong>Garantía de Privacidad:</strong> No guardamos su información personal en nuestros servidores ni la compartimos con terceros. Sus respuestas son procesadas de forma temporal estrictamente para simular la elegibilidad de subsidios del Estado.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__brand-name">InfoDerecho Colombia</p>
+        <p>Información clara, gratuita e independiente sobre programas sociales del Estado colombiano. Facilitamos el entendimiento de sus derechos fundamentales.</p>
+      </div>
+      <hr class="footer__rule footer__rule--mid">
+      <div class="footer__sources">
+        <p class="footer__sources-title">FUENTES OFICIALES UTILIZADAS:</p>
+        <p>DANE (Línea de Pobreza Monetaria) · Departamento de Prosperidad Social (DPS) · Departamento Nacional de Planeación (DNP) · SISBÉN IV.</p>
+      </div>
+    </div>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__legal">Atención: Este es un portal informativo e independiente. No realizamos trámites de inscripción ni somos un canal oficial del Gobierno de Colombia.</p>
+      <p class="footer__copy">© 2026 InfoDerecho Colombia.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

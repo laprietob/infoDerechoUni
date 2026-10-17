@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre el Proyecto | InfoDerecho Colombia</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <meta name="theme-color" content="#1E4D8C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__bar">
+      <a class="logo" href="../index.html">
+        <span class="logo__icon"><img src="../assets/logo/logo-mark.svg" alt=""></span>
+        <span class="logo__text">
+          <span class="logo__name">InfoDerecho</span>
+          <span class="logo__sub">COLOMBIA</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <img src="../assets/icons/menu.svg" alt="">
+      </button>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__tab" href="../index.html">Inicio</a>
+      <a class="nav__tab" href="checklist.html">Checklist de Ayudas</a>
+      <a class="nav__tab" href="programas.html">Directorio de Programas</a>
+      <a class="nav__tab" href="calculadora.html">Calculadora de Pobreza</a>
+      <a class="nav__tab is-active" href="acerca.html" aria-current="page">Sobre el Proyecto</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="about">
+      <div class="about__col">
+        <div class="about__text">
+          <h1>Sobre el Proyecto</h1>
+          <p>InfoDerecho Colombia nace con el firme propósito de democratizar el acceso a la información pública, social y jurídica en el país. Facilitamos que cualquier ciudadano, sin importar su ubicación, conozca las herramientas de asistencia que ofrece el Estado.</p>
+          <p>La falta de claridad informativa y las complejidades técnicas constituyen una barrera invisible para las familias de áreas rurales y municipios de difícil acceso. Con este portal, buscamos alinear el acceso a la información con el Objetivo de Desarrollo Sostenible (ODS 16) de Paz, Justicia e Instituciones Sólidas.</p>
+        </div>
+
+        <div class="about__image">
+          <picture>
+            <source media="(min-width: 960px)" srcset="../assets/img/rural-desktop.png">
+            <img src="../assets/img/rural-mobile.png" alt="Escuela rural en un paisaje montañoso de Colombia" loading="lazy">
+          </picture>
+        </div>
+
+        <section class="card contact">
+          <h2>¿Tiene dudas o sugerencias?</h2>
+          <p>Queremos mantener este portal al día. Si encuentra información desactualizada de su municipio o alcaldía local, por favor contáctenos.</p>
+          <a class="btn" href="#"><img src="../assets/icons/mail.svg" alt=""><span>Contactar al Equipo</span></a>
+        </section>
+      </div>
+
+      <div class="about__col about__col--side">
+        <section class="sources">
+          <h2>Nuestras Fuentes Oficiales</h2>
+          <div class="sources__list">
+          <article class="card source">
+            <h3>DANE - Departamento Administrativo Nacional de Estadística</h3>
+            <p>De aquí extraemos anualmente la actualización de la Línea de Pobreza Monetaria por departamento y tipología del hogar.</p>
+          </article>
+          <article class="card source">
+            <h3>Prosperidad Social (DPS)</h3>
+            <p>Entidad responsable de la ejecución y requisitos operativos de subsidios vitales como Renta Ciudadana y Devolución del IVA.</p>
+          </article>
+          <article class="card source">
+            <h3>Departamento Nacional de Planeación (DNP)</h3>
+            <p>Organismo que rige la clasificación técnica Sisbén IV, utilizado para priorizar a los beneficiarios de planes gubernamentales.</p>
+          </article>
+          </div>
+        </section>
+
+        <aside class="warning">
+          <h3>Advertencia Importante</h3>
+          <p>Este sitio web es exclusivamente de carácter informativo e independiente. No realiza inscripciones, no asigna subsidios de forma directa, ni solicita claves de acceso de canales oficiales del Gobierno de Colombia.</p>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__brand-name">InfoDerecho Colombia</p>
+        <p>Información clara, gratuita e independiente sobre programas sociales del Estado colombiano. Facilitamos el entendimiento de sus derechos fundamentales.</p>
+      </div>
+      <hr class="footer__rule footer__rule--mid">
+      <div class="footer__sources">
+        <p class="footer__sources-title">FUENTES OFICIALES UTILIZADAS:</p>
+        <p>DANE (Línea de Pobreza Monetaria) · Departamento de Prosperidad Social (DPS) · Departamento Nacional de Planeación (DNP) · SISBÉN IV.</p>
+      </div>
+    </div>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__legal">Atención: Este es un portal informativo e independiente. No realizamos trámites de inscripción ni somos un canal oficial del Gobierno de Colombia.</p>
+      <p class="footer__copy">© 2026 InfoDerecho Colombia.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

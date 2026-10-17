@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Directorio de Programas | InfoDerecho Colombia</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <meta name="theme-color" content="#1E4D8C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__bar">
+      <a class="logo" href="../index.html">
+        <span class="logo__icon"><img src="../assets/logo/logo-mark.svg" alt=""></span>
+        <span class="logo__text">
+          <span class="logo__name">InfoDerecho</span>
+          <span class="logo__sub">COLOMBIA</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <img src="../assets/icons/menu.svg" alt="">
+      </button>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__tab" href="../index.html">Inicio</a>
+      <a class="nav__tab" href="checklist.html">Checklist de Ayudas</a>
+      <a class="nav__tab is-active" href="programas.html" aria-current="page">Directorio de Programas</a>
+      <a class="nav__tab" href="calculadora.html">Calculadora de Pobreza</a>
+      <a class="nav__tab" href="acerca.html">Sobre el Proyecto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="search">
+      <h1>Directorio de Apoyos Estatales</h1>
+      <p class="search__intro">Consulte de manera estructurada los requisitos, entidades responsables y guías de postulación para todos los programas de asistencia vigentes.</p>
+      <div class="search__controls">
+        <label class="search__bar">
+          <img src="../assets/icons/search.svg" alt="">
+          <input id="program-search" type="search" placeholder="Buscar programas por palabra clave (ej. SISBÉN, Adulto Mayor)..." autocomplete="off">
+        </label>
+        <div class="chips" role="group" aria-label="Filtrar programas">
+          <button class="chip is-active" type="button" data-filter="all"><span class="d-only">Todos los Programas</span><span class="m-only">Todos</span> (6)</button>
+          <button class="chip" type="button" data-filter="extrema-pobreza">Extrema Pobreza</button>
+          <button class="chip" type="button" data-filter="adulto-mayor">Adulto Mayor</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="programs">
+      <article class="card program" data-tags="extrema-pobreza">
+        <div>
+          <h2>Renta Ciudadana (Familias en Acción)</h2>
+          <p class="program__entity">ENTIDAD: Prosperidad Social</p>
+        </div>
+        <p class="program__desc">Apoyo económico mensual diseñado para asegurar la alimentación, salud y educación de niños, niñas y adolescentes que viven en condiciones de extrema pobreza.</p>
+        <div class="program__req"><img src="../assets/icons/check-check.svg" alt=""><p>SISBÉN IV (Grupo A) · Hogares vulnerables con menores de 18 años priorizados.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="extrema-pobreza">
+        <div>
+          <h2>Devolución del IVA</h2>
+          <p class="program__entity">ENTIDAD: Prosperidad Social / DNP</p>
+        </div>
+        <p class="program__desc">Transferencia monetaria bimestral orientada a aliviar el impacto del impuesto sobre las ventas (IVA) en los hogares de menores recursos económicos en todo el país.</p>
+        <div class="program__req"><img src="../assets/icons/check-check.svg" alt=""><p>SISBÉN IV (Grupos A y B) · Registro unificado de beneficiarios de programas sociales.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="extrema-pobreza adulto-mayor">
+        <div>
+          <h2>Colombia Mayor</h2>
+          <p class="program__entity">ENTIDAD: Prosperidad Social</p>
+        </div>
+        <p class="program__desc">Subsidio económico mensual destinado a adultos mayores en estado de vulnerabilidad o desamparo, que no cuentan con una pensión y viven en extrema pobreza.</p>
+        <div class="program__req"><img src="../assets/icons/check-check.svg" alt=""><p>Edad mínima (Mujeres: 54 años, Hombres: 59 años) · No poseer pensión ni rentas mensuales.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="">
+        <div>
+          <h2>Jóvenes en Paz</h2>
+          <p class="program__entity">ENTIDAD: Ministerio de la Igualdad</p>
+        </div>
+        <p class="program__desc">Programa integral de transferencias monetarias y acompañamiento formativo enfocado en jóvenes de zonas de alta vulnerabilidad y conflictividad social.</p>
+        <div class="program__req"><img src="../assets/icons/check-check.svg" alt=""><p>Jóvenes entre 12 y 28 años · Compromiso de participación en proyectos comunitarios.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="">
+        <div>
+          <h2>Mi Casa Ya</h2>
+          <p class="program__entity">ENTIDAD: Ministerio de Vivienda</p>
+        </div>
+        <p class="program__desc">Subsidio directo destinado a facilitar el pago de la cuota inicial y cobertura de la tasa de interés para la adquisición de vivienda de interés social (VIS) urbana o rural.</p>
+        <div class="program__req"><img src="../assets/icons/check-check.svg" alt=""><p>Ingresos inferiores a 4 SMMLV · No poseer vivienda propia en ningún lugar del país.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <article class="card program" data-tags="">
+        <div>
+          <h2>Jóvenes Propietarios</h2>
+          <p class="program__entity">ENTIDAD: Fondo Nacional del Ahorro / MinVivienda</p>
+        </div>
+        <p class="program__desc">Programa estatal que ofrece tasas de interés preferenciales y condiciones de financiación sumamente favorables para que jóvenes adquieran su primera vivienda.</p>
+        <div class="program__req"><img src="../assets/icons/check-check.svg" alt=""><p>Jóvenes entre 18 y 28 años · Ingresos menores a 2 SMMLV · Vinculación al FNA.</p></div>
+        <div class="program__actions">
+          <span>Actualizado: Enero 2026</span>
+        </div>
+      </article>
+      <p class="programs__empty" id="programs-empty" hidden>No encontramos programas que coincidan con su búsqueda.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__brand-name">InfoDerecho Colombia</p>
+        <p>Información clara, gratuita e independiente sobre programas sociales del Estado colombiano. Facilitamos el entendimiento de sus derechos fundamentales.</p>
+      </div>
+      <hr class="footer__rule footer__rule--mid">
+      <div class="footer__sources">
+        <p class="footer__sources-title">FUENTES OFICIALES UTILIZADAS:</p>
+        <p>DANE (Línea de Pobreza Monetaria) · Departamento de Prosperidad Social (DPS) · Departamento Nacional de Planeación (DNP) · SISBÉN IV.</p>
+      </div>
+    </div>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__legal">Atención: Este es un portal informativo e independiente. No realizamos trámites de inscripción ni somos un canal oficial del Gobierno de Colombia.</p>
+      <p class="footer__copy">© 2026 InfoDerecho Colombia.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
