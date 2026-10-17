@@ -306,6 +306,16 @@ select {
   color: var(--muted);
 }
 
+.field__error {
+  font-size: calc(11px * var(--text-scale));
+  font-weight: 600;
+  color: var(--error);
+}
+
+.control:has([aria-invalid="true"]) {
+  border-color: var(--error);
+}
+
 .control {
   display: flex;
   align-items: center;
