@@ -1,46 +1,27 @@
-/* InfoDerecho Colombia – Comportamiento interactivo del portal.
-   Estructura bajo buenas prácticas de JavaScript y Clean Code (Ingeniería Web I):
-   1. 'use strict' obligatorio.
-   2. Ámbito local sin 'var' (uso estricto de 'const' y 'let').
-   3. Funciones flecha (=>) para modularizar lógica, cálculos y callbacks.
-   4. Parámetros y argumentos explícitos con nombres de contenedores y funciones significativos.
-   5. Scripts cargados antes del cierre de </body> en el HTML.
-*/
-
 "use strict";
 
 (() => {
-  // Constantes de referencia socioeconómica (valores DANE y normatividad vigente)
-  const UMBRAL_POBREZA_EXTREMA_COP = 230000; // COP por persona / mes (línea monetaria extrema DANE)
-  const SALARIO_MINIMO_LEGAL_VIGENTE_COP = 1423500; // SMMLV en COP
+  const UMBRAL_POBREZA_EXTREMA_COP = 230000;
+  const SALARIO_MINIMO_LEGAL_VIGENTE_COP = 1423500;
 
-  /* ==========================================================================
-     Funciones puras de formateo y cálculo (Clean Code: parámetros y retorno)
-     ========================================================================== */
-
-  // Formatea un número al estándar monetario colombiano COP
   const formatear_moneda_cop = (valor_numerico) => {
     return "$" + Math.round(valor_numerico).toLocaleString("es-CO") + " COP";
   };
 
-  // Parsea una cadena de texto extrayendo los dígitos a número entero
   const parsear_texto_a_cop = (texto_con_formato) => {
     const solo_digitos = String(texto_con_formato).replace(/\D/g, "");
     return solo_digitos ? parseInt(solo_digitos, 10) : 0;
   };
 
-  // Calcula el ingreso promedio por miembro del hogar (ejemplo: const calcular_indice = (peso, altura) => ...)
   const calcular_ingreso_por_persona = (ingreso_total, cantidad_miembros) => {
     const divisor = cantidad_miembros > 0 ? cantidad_miembros : 1;
     return ingreso_total / divisor;
   };
 
-  // Verifica si el ingreso per cápita se encuentra por debajo de la línea de pobreza extrema
   const verificar_pobreza_extrema = (ingreso_per_capita, umbral_limite) => {
     return ingreso_per_capita < umbral_limite;
   };
 
-  // Formatea dinámicamente un input monetario con separador de miles mientras el usuario escribe
   const vincular_formato_moneda = (campo_input) => {
     if (!campo_input) return;
     campo_input.addEventListener("input", () => {
@@ -49,9 +30,6 @@
     });
   };
 
-  /* ==========================================================================
-     Módulo 1: Menú de navegación móvil
-     ========================================================================== */
   const boton_menu_movil = document.querySelector(".menu-btn");
   const barra_navegacion = document.querySelector(".nav");
 
@@ -62,16 +40,13 @@
     });
   }
 
-  /* ==========================================================================
-     Módulo 2: Menú y panel de Accesibilidad
-     ========================================================================== */
   const boton_accesibilidad = document.getElementById("a11y-toggle");
   const menu_accesibilidad = document.getElementById("a11y-menu");
 
   if (boton_accesibilidad && menu_accesibilidad) {
     const CLAVE_ALMACENAMIENTO_A11Y = "infoderecho-a11y";
     const ESCALAS_DE_TEXTO = [0.9, 1, 1.1, 1.2, 1.3, 1.4];
-    const INDICE_ESCALA_POR_DEFECTO = 1; // 100%
+    const INDICE_ESCALA_POR_DEFECTO = 1;
 
     const elemento_estado_a11y = document.getElementById("a11y-status");
     const elemento_raiz_documento = document.documentElement;
@@ -92,9 +67,7 @@
         estado_accesibilidad.paso_escala = configuracion_guardada.step;
       }
       estado_accesibilidad.alto_contraste = configuracion_guardada.contrast === true;
-    } catch (error_lectura) {
-      // Uso de valores por defecto si no hay almacenamiento
-    }
+    } catch (error_lectura) {}
 
     const aplicar_accesibilidad = (mensaje_notificacion) => {
       const escala_seleccionada = ESCALAS_DE_TEXTO[estado_accesibilidad.paso_escala];
@@ -176,9 +149,6 @@
     aplicar_accesibilidad();
   }
 
-  /* ==========================================================================
-     Módulo 3: Navegación de una sola página (SPA con Hash y ScrollSpy)
-     ========================================================================== */
   const pestañas_navegacion = Array.from(document.querySelectorAll(".nav__tab[href^='#']"));
 
   if (pestañas_navegacion.length > 0) {
@@ -215,7 +185,6 @@
         }
       });
 
-      // Al llegar al final de la página, activa la última sección
       if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) {
         seccion_actual = secciones_pagina[secciones_pagina.length - 1];
       }
@@ -230,9 +199,6 @@
     sincronizar_scroll_con_pestañas();
   }
 
-  /* ==========================================================================
-     Módulo 4: Directorio de programas (búsqueda y filtros interactivos)
-     ========================================================================== */
   const campo_busqueda_programa = document.getElementById("program-search");
   const tarjetas_programas = Array.from(document.querySelectorAll(".program"));
 
@@ -272,9 +238,6 @@
     });
   }
 
-  /* ==========================================================================
-     Módulo 5: Calculadora de línea de pobreza extrema
-     ========================================================================== */
   const formulario_calculadora = document.getElementById("calc-form");
 
   if (formulario_calculadora) {
@@ -291,7 +254,6 @@
       const ingreso_total = parsear_texto_a_cop(campo_ingreso_calculadora.value);
       const total_miembros = parseInt(selector_miembros_calculadora.value, 10) || 1;
 
-      // Parámetros pasados a funciones de cálculo limpias
       const ingreso_per_capita = calcular_ingreso_por_persona(ingreso_total, total_miembros);
       const esta_bajo_umbral = verificar_pobreza_extrema(ingreso_per_capita, UMBRAL_POBREZA_EXTREMA_COP);
 
@@ -319,9 +281,6 @@
     ejecutar_simulacion_pobreza();
   }
 
-  /* ==========================================================================
-     Módulo 6: Checklist de elegibilidad de programas sociales
-     ========================================================================== */
   const formulario_checklist = document.getElementById("checklist-form");
 
   if (formulario_checklist) {
@@ -335,7 +294,6 @@
 
     vincular_formato_moneda(campo_ingreso_checklist);
 
-    // Reglas de negocio expresadas como funciones flecha puras
     const reglas_elegibilidad = [
       {
         nombre: "Renta Ciudadana (Familias en Acción)",
@@ -397,6 +355,84 @@
         } else {
           window.location.href = "../index.html";
         }
+      });
+    }
+  }
+
+  const mapa_oficinas = document.getElementById("office-map");
+
+  if (mapa_oficinas) {
+    const etiqueta_mapa_oficinas = document.getElementById("office-map-label");
+    const tarjetas_oficinas = Array.from(document.querySelectorAll(".office"));
+    const botones_filtro_oficinas = Array.from(document.querySelectorAll("[data-office-filter]"));
+    const mensaje_sin_oficinas = document.getElementById("offices-empty");
+    const formulario_buscador_oficinas = document.getElementById("office-finder");
+    const ZOOM_OFICINA = 17;
+    const ZOOM_CIUDAD = 13;
+    const ANCHO_ESCRITORIO = 960;
+
+    const construir_url_mapa = (consulta_lugar, nivel_zoom) => {
+      return "https://maps.google.com/maps?q=" + encodeURIComponent(consulta_lugar) + "&z=" + nivel_zoom + "&hl=es&output=embed";
+    };
+
+    const mostrar_en_mapa = (consulta_lugar, nivel_zoom, descripcion_lugar) => {
+      mapa_oficinas.src = construir_url_mapa(consulta_lugar, nivel_zoom);
+      if (etiqueta_mapa_oficinas) {
+        etiqueta_mapa_oficinas.textContent = "Mostrando: " + descripcion_lugar;
+      }
+      if (window.innerWidth < ANCHO_ESCRITORIO) {
+        mapa_oficinas.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    };
+
+    const marcar_oficina_seleccionada = (tarjeta_seleccionada) => {
+      tarjetas_oficinas.forEach((tarjeta) => {
+        tarjeta.classList.toggle("is-selected", tarjeta === tarjeta_seleccionada);
+      });
+    };
+
+    tarjetas_oficinas.forEach((tarjeta) => {
+      const boton_ver_en_mapa = tarjeta.querySelector("[data-office-show]");
+      if (!boton_ver_en_mapa) return;
+      boton_ver_en_mapa.addEventListener("click", () => {
+        marcar_oficina_seleccionada(tarjeta);
+        mostrar_en_mapa(tarjeta.dataset.query, ZOOM_OFICINA, tarjeta.querySelector("h2").textContent);
+      });
+    });
+
+    botones_filtro_oficinas.forEach((boton_filtro) => {
+      boton_filtro.addEventListener("click", () => {
+        const entidad_filtrada = boton_filtro.dataset.officeFilter;
+        let total_oficinas_visibles = 0;
+
+        botones_filtro_oficinas.forEach((boton) => boton.classList.toggle("is-active", boton === boton_filtro));
+        tarjetas_oficinas.forEach((tarjeta) => {
+          const debe_mostrar = entidad_filtrada === "all" || tarjeta.dataset.entity === entidad_filtrada;
+          tarjeta.hidden = !debe_mostrar;
+          if (debe_mostrar) total_oficinas_visibles++;
+        });
+
+        if (mensaje_sin_oficinas) {
+          mensaje_sin_oficinas.hidden = total_oficinas_visibles !== 0;
+        }
+      });
+    });
+
+    if (formulario_buscador_oficinas) {
+      const selector_tipo_oficina = document.getElementById("finder-type");
+      const selector_departamento = document.getElementById("finder-department");
+      const campo_municipio = document.getElementById("finder-town");
+
+      formulario_buscador_oficinas.addEventListener("submit", (evento_submit) => {
+        evento_submit.preventDefault();
+
+        const tipo_oficina = selector_tipo_oficina.value;
+        const nombre_departamento = selector_departamento.selectedOptions[0].textContent;
+        const municipio_buscado = campo_municipio.value.trim() || selector_departamento.value;
+        const consulta_lugar = `${tipo_oficina}, ${municipio_buscado}, ${nombre_departamento}, Colombia`;
+
+        marcar_oficina_seleccionada(null);
+        mostrar_en_mapa(consulta_lugar, ZOOM_CIUDAD, `${tipo_oficina} en ${municipio_buscado} (${nombre_departamento})`);
       });
     }
   }

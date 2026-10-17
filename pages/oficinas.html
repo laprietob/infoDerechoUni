@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficinas de Atención | InfoDerecho Colombia</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/logo/favicon.svg">
+  <meta name="theme-color" content="#1E4D8C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/pages.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header__bar">
+      <a class="logo" href="../index.html">
+        <span class="logo__icon"><img src="../assets/logo/logo-mark.svg" alt=""></span>
+        <span class="logo__text">
+          <span class="logo__name">InfoDerecho</span>
+          <span class="logo__sub">COLOMBIA</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <img src="../assets/icons/menu.svg" alt="">
+      </button>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a class="nav__tab" href="../index.html">Inicio</a>
+      <a class="nav__tab" href="checklist.html">Checklist de Ayudas</a>
+      <a class="nav__tab" href="programas.html">Directorio de Programas</a>
+      <a class="nav__tab" href="calculadora.html">Calculadora de Pobreza</a>
+      <a class="nav__tab is-active" href="oficinas.html" aria-current="page">Oficinas</a>
+      <a class="nav__tab" href="acerca.html">Sobre el Proyecto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="search">
+      <h1>Oficinas de Atención</h1>
+      <p class="search__intro">Ubique en el mapa las sedes oficiales donde se atienden los trámites de los programas del directorio, o busque la oficina más cercana a su municipio.</p>
+      <div class="chips" role="group" aria-label="Filtrar oficinas">
+        <button class="chip is-active" type="button" data-office-filter="all"><span class="d-only">Todas las Oficinas</span><span class="m-only">Todas</span> (11)</button>
+        <button class="chip" type="button" data-office-filter="dps">Prosperidad Social</button>
+        <button class="chip" type="button" data-office-filter="vivienda">Vivienda</button>
+        <button class="chip" type="button" data-office-filter="dnp">DNP</button>
+      </div>
+    </section>
+
+    <section class="offices">
+      <div class="card offices__map">
+        <iframe id="office-map" title="Mapa de Google con la oficina seleccionada" src="https://maps.google.com/maps?q=Centro+Comercial+San+Mart%C3%ADn%2C+Carrera+7+32-42%2C+Bogot%C3%A1&amp;z=17&amp;hl=es&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="offices__map-label" id="office-map-label" aria-live="polite">Mostrando: Prosperidad Social – Sede Principal</p>
+      </div>
+
+      <div class="offices__side">
+        <form class="card offices__finder" id="office-finder">
+          <h2>Buscar cerca de mí</h2>
+          <p>Las sedes de la lista están en Bogotá. Si vive en otro lugar, busque la oficina de su departamento o municipio.</p>
+          <label class="field">
+            <span class="field__label">Tipo de oficina</span>
+            <span class="control control--select">
+              <select id="finder-type">
+                <option value="Prosperidad Social">Prosperidad Social (Renta Ciudadana, IVA, Colombia Mayor)</option>
+                <option value="Oficina del Sisbén">Oficina del Sisbén (encuesta y actualización)</option>
+                <option value="Fondo Nacional del Ahorro">Fondo Nacional del Ahorro (vivienda)</option>
+              </select>
+            </span>
+          </label>
+          <label class="field">
+            <span class="field__label">Departamento</span>
+            <span class="control control--select">
+              <select id="finder-department">
+                <option value="Leticia">Amazonas</option>
+                <option value="Medellín">Antioquia</option>
+                <option value="Arauca">Arauca</option>
+                <option value="Barranquilla">Atlántico</option>
+                <option value="Bogotá">Bogotá D.C.</option>
+                <option value="Cartagena">Bolívar</option>
+                <option value="Tunja">Boyacá</option>
+                <option value="Manizales">Caldas</option>
+                <option value="Florencia">Caquetá</option>
+                <option value="Yopal">Casanare</option>
+                <option value="Popayán">Cauca</option>
+                <option value="Valledupar">Cesar</option>
+                <option value="Quibdó" selected>Chocó</option>
+                <option value="Montería">Córdoba</option>
+                <option value="Bogotá">Cundinamarca</option>
+                <option value="Inírida">Guainía</option>
+                <option value="San José del Guaviare">Guaviare</option>
+                <option value="Neiva">Huila</option>
+                <option value="Riohacha">La Guajira</option>
+                <option value="Santa Marta">Magdalena</option>
+                <option value="Villavicencio">Meta</option>
+                <option value="Pasto">Nariño</option>
+                <option value="Cúcuta">Norte de Santander</option>
+                <option value="Mocoa">Putumayo</option>
+                <option value="Armenia">Quindío</option>
+                <option value="Pereira">Risaralda</option>
+                <option value="San Andrés">San Andrés y Providencia</option>
+                <option value="Bucaramanga">Santander</option>
+                <option value="Sincelejo">Sucre</option>
+                <option value="Ibagué">Tolima</option>
+                <option value="Cali">Valle del Cauca</option>
+                <option value="Mitú">Vaupés</option>
+                <option value="Puerto Carreño">Vichada</option>
+              </select>
+            </span>
+          </label>
+          <label class="field">
+            <span class="field__label">Municipio (opcional)</span>
+            <span class="control">
+              <input id="finder-town" type="text" placeholder="Ej. Istmina" autocomplete="address-level2">
+            </span>
+            <span class="field__hint">Si lo deja vacío, buscamos en la capital del departamento.</span>
+          </label>
+          <button class="btn btn--block" type="submit">Buscar en el mapa</button>
+        </form>
+
+        <ul class="offices__list">
+          <li class="card office is-selected" data-entity="dps" data-query="Centro Comercial San Martín, Carrera 7 32-42, Bogotá">
+            <h2>Prosperidad Social – Sede Principal</h2>
+            <p class="office__entity">Renta Ciudadana · Devolución del IVA · Colombia Mayor · Jóvenes en Paz</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Carrera 7 No. 32-42, Centro Comercial San Martín, Bogotá</p>
+            <p class="office__meta">Línea gratuita 01 8000 95 1100 · Bogotá 601 379 1088</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Centro+Comercial+San+Martín,+Carrera+7+32-42,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dps" data-query="SuperCADE CAD, Carrera 30 25-90, Bogotá">
+            <h2>SuperCADE CAD (Teusaquillo)</h2>
+            <p class="office__entity">Punto de atención de Prosperidad Social</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Carrera 30 No. 25-90, Bogotá</p>
+            <p class="office__meta">Lun–vie 7:00 a. m.–4:30 p. m. · Sáb 8:00 a. m.–12:00 m.</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=SuperCADE+CAD,+Carrera+30+25-90,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dps" data-query="SuperCADE Américas, Avenida Carrera 86 43-55 Sur, Bogotá">
+            <h2>SuperCADE Américas (Kennedy)</h2>
+            <p class="office__entity">Punto de atención de Prosperidad Social</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Avenida Carrera 86 No. 43-55 Sur, Bogotá</p>
+            <p class="office__meta">Lun–vie 7:00 a. m.–4:30 p. m. · Sáb 8:00 a. m.–12:00 m.</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=SuperCADE+Américas,+Avenida+Carrera+86+43-55+Sur,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dps" data-query="SuperCADE Suba, Avenida Calle 145 103B-90, Bogotá">
+            <h2>SuperCADE Suba</h2>
+            <p class="office__entity">Punto de atención de Prosperidad Social</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Avenida Calle 145 No. 103B-90, Bogotá</p>
+            <p class="office__meta">Lun–vie 7:00 a. m.–4:30 p. m. · Sáb 8:00 a. m.–12:00 m.</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=SuperCADE+Suba,+Avenida+Calle+145+103B-90,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dps" data-query="SuperCADE Bosa, Avenida Calle 57R Sur 72D-12, Bogotá">
+            <h2>SuperCADE Bosa</h2>
+            <p class="office__entity">Punto de atención de Prosperidad Social</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Avenida Calle 57R Sur No. 72D-12, Bogotá</p>
+            <p class="office__meta">Lun–vie 7:00 a. m.–4:30 p. m. · Sáb 8:00 a. m.–12:00 m.</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=SuperCADE+Bosa,+Avenida+Calle+57R+Sur+72D-12,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dps" data-query="SuperCADE 20 de Julio, Carrera 5A 30C-20 Sur, Bogotá">
+            <h2>SuperCADE 20 de Julio (San Cristóbal)</h2>
+            <p class="office__entity">Punto de atención de Prosperidad Social</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Carrera 5A No. 30C-20 Sur, Bogotá</p>
+            <p class="office__meta">Lun–vie 7:00 a. m.–4:30 p. m. · Sáb 8:00 a. m.–12:00 m.</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=SuperCADE+20+de+Julio,+Carrera+5A+30C-20+Sur,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dps" data-query="SuperCADE Manitas, Carrera 18L 70B-50 Sur, Bogotá">
+            <h2>SuperCADE Manitas (Ciudad Bolívar)</h2>
+            <p class="office__entity">Punto de atención de Prosperidad Social</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Carrera 18L No. 70B-50 Sur, Bogotá</p>
+            <p class="office__meta">Lun–vie 7:00 a. m.–4:30 p. m. · Sáb 8:00 a. m.–12:00 m.</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=SuperCADE+Manitas,+Carrera+18L+70B-50+Sur,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dps" data-query="SuperCADE Engativá, Transversal 113B 66-54, Bogotá">
+            <h2>SuperCADE Engativá</h2>
+            <p class="office__entity">Punto de atención de Prosperidad Social</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Transversal 113B No. 66-54, Sabanas del Dorado, Bogotá</p>
+            <p class="office__meta">Lun–vie 7:00 a. m.–4:30 p. m. · Sáb 8:00 a. m.–12:00 m.</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=SuperCADE+Engativá,+Transversal+113B+66-54,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="vivienda" data-query="Ministerio de Vivienda, Calle 17 9-36, Bogotá">
+            <h2>Ministerio de Vivienda</h2>
+            <p class="office__entity">Mi Casa Ya</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Calle 17 No. 9-36, piso 3, Bogotá</p>
+            <p class="office__meta">Lun–vie 8:00 a. m.–4:00 p. m. · PBX 601 914 2174</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Ministerio+de+Vivienda,+Calle+17+9-36,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="vivienda" data-query="Fondo Nacional del Ahorro, Carrera 65 11-83, Bogotá">
+            <h2>Fondo Nacional del Ahorro – Sede Principal</h2>
+            <p class="office__entity">Jóvenes Propietarios</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Carrera 65 No. 11-83, Puente Aranda, Bogotá</p>
+            <p class="office__meta">Lun–vie 8:00 a. m.–4:00 p. m. · Sáb 8:00 a. m.–12:00 m. · 01 8000 52 7070</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Fondo+Nacional+del+Ahorro,+Carrera+65+11-83,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+          <li class="card office" data-entity="dnp" data-query="Departamento Nacional de Planeación, Calle 26 13-19, Bogotá">
+            <h2>Departamento Nacional de Planeación</h2>
+            <p class="office__entity">Sisbén IV · Devolución del IVA</p>
+            <p class="office__line"><img src="../assets/icons/map-pin.svg" alt="">Calle 26 No. 13-19, piso 1, Edificio Fonade, Bogotá</p>
+            <p class="office__meta">Lun–vie 8:00 a. m.–4:30 p. m. · 601 381 5000 · Sin sedes regionales</p>
+            <div class="office__actions">
+              <button class="btn btn--mini" type="button" data-office-show>Ver en el mapa</button>
+              <a class="btn btn--mini btn--outline" href="https://www.google.com/maps/dir/?api=1&amp;destination=Departamento+Nacional+de+Planeación,+Calle+26+13-19,+Bogotá" target="_blank" rel="noopener">Cómo llegar</a>
+            </div>
+          </li>
+        </ul>
+        <p class="programs__empty" id="offices-empty" hidden>No hay oficinas para este filtro.</p>
+
+        <div class="notice">
+          <img src="../assets/icons/shield-alert.svg" alt="">
+          <p>Direcciones tomadas de los sitios oficiales de cada entidad (octubre de 2026). La encuesta del Sisbén se hace en la oficina del Sisbén de su alcaldía, no en el DNP. El Ministerio de la Igualdad fue liquidado en junio de 2026: para Jóvenes en Paz, consulte a Prosperidad Social. En agosto de 2026 algunas sedes regionales (Caldas, Cauca, Chocó, Meta, Quindío, Risaralda, Urabá y Valle del Cauca) suspendieron la atención presencial; llame antes de desplazarse.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__brand-name">InfoDerecho Colombia</p>
+        <p>Información clara, gratuita e independiente sobre programas sociales del Estado colombiano. Facilitamos el entendimiento de sus derechos fundamentales.</p>
+      </div>
+      <hr class="footer__rule footer__rule--mid">
+      <div class="footer__sources">
+        <p class="footer__sources-title">FUENTES OFICIALES UTILIZADAS:</p>
+        <p>DANE (Línea de Pobreza Monetaria) · Departamento de Prosperidad Social (DPS) · Departamento Nacional de Planeación (DNP) · SISBÉN IV.</p>
+      </div>
+    </div>
+    <hr class="footer__rule">
+    <div class="footer__bottom">
+      <p class="footer__legal">Atención: Este es un portal informativo e independiente. No realizamos trámites de inscripción ni somos un canal oficial del Gobierno de Colombia.</p>
+      <p class="footer__copy">© 2026 InfoDerecho Colombia.</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

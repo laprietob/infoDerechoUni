@@ -45,12 +45,13 @@ No requiere instalar nada ni servidor. Es HTML, CSS y JavaScript puros.
 │   ├── checklist.html         Checklist de elegibilidad
 │   ├── programas.html         Directorio de programas
 │   ├── calculadora.html       Calculadora de línea de pobreza
+│   ├── oficinas.html          Mapa de oficinas de atención (Google Maps)
 │   └── acerca.html            Sobre el proyecto
 ├── css/
 │   ├── styles.css             Base compartida (tokens, header, footer, botones, formularios)
 │   └── pages.css              Estilos específicos de cada pantalla
 ├── js/
-│   └── main.js                Todo el comportamiento (menú, filtros, calculadora, checklist)
+│   └── main.js                Todo el comportamiento (menú, filtros, calculadora, checklist, mapa)
 └── assets/
     ├── img/                   Fotos (hero y rural, en versión móvil y escritorio)
     └── icons/                 íconos SVG (los `*-blue.svg` son las versiones azules para botones blancos)
@@ -60,7 +61,7 @@ No requiere instalar nada ni servidor. Es HTML, CSS y JavaScript puros.
 
 ---
 
-## 4. Las 5 pantallas
+## 4. Las 6 pantallas
 
 | Archivo | Qué contiene |
 |---|---|
@@ -68,9 +69,10 @@ No requiere instalar nada ni servidor. Es HTML, CSS y JavaScript puros.
 | `pages/checklist.html` | Barra de progreso, formulario (edad del jefe de hogar, ingreso, menores de 18, departamento), aviso de privacidad |
 | `pages/programas.html` | Buscador, chips de filtro (Todos / Extrema Pobreza / Adulto Mayor) y 6 tarjetas de programas |
 | `pages/calculadora.html` | Formulario (ingreso y número de miembros), tarjeta de resultado y nota informativa |
+| `pages/oficinas.html` | Chips por entidad, mapa de Google Maps, buscador por departamento/municipio y 11 tarjetas de oficinas oficiales |
 | `pages/acerca.html` | Descripción del proyecto, imagen, fuentes oficiales (DANE, DPS, DNP), advertencia y contacto |
 
-Todas comparten el mismo **header** (logo + navegación de 5 pestañas) y el mismo **footer** (marca, fuentes oficiales, aviso legal).
+Todas comparten el mismo **header** (logo + navegación de 6 pestañas) y el mismo **footer** (marca, fuentes oficiales, aviso legal).
 
 ---
 
@@ -78,7 +80,7 @@ Todas comparten el mismo **header** (logo + navegación de 5 pestañas) y el mis
 
 - **Un solo HTML por pantalla**, que sirve para móvil y escritorio. No hay archivos separados por tamaño; el CSS decide cómo se ve.
 - **Etiquetas semánticas:** `header`, `nav`, `main`, `section`, `article`, `aside`, `footer`, `form`, `label`. Facilita la accesibilidad y la lectura del código.
-- **Header y footer están repetidos** en cada archivo (copiados). Es la solución más simple sin framework, pero significa que **un cambio en el menú hay que replicarlo en las 5 páginas**.
+- **Header y footer están repetidos** en cada archivo (copiados). Es la solución más simple sin framework, pero significa que **un cambio en el menú hay que replicarlo en las 6 páginas**.
 - **Pestaña activa:** la página actual lleva la clase `is-active` y `aria-current="page"` en su enlace del menú.
 - **Imágenes responsivas con `<picture>`:** el navegador carga la foto de escritorio si la pantalla mide 960 px o más, y la de móvil si no.
   ```html
@@ -135,13 +137,14 @@ Hay un único punto de quiebre: **960 px**. Por debajo, el menú es hamburguesa 
 
 ## 7. JavaScript (`js/main.js`)
 
-Un solo archivo, sin librerías. Está envuelto en una función que se ejecuta sola, y **cada bloque se activa únicamente si encuentra sus elementos en la página** (por eso el mismo archivo sirve para las 5).
+Un solo archivo, sin librerías. Está envuelto en una función que se ejecuta sola, y **cada bloque se activa únicamente si encuentra sus elementos en la página** (por eso el mismo archivo sirve para las 6).
 
 | Bloque | Páginas | Qué hace |
 |---|---|---|
 | Menú móvil | todas | El botón hamburguesa muestra/oculta la navegación |
 | Directorio | `programas.html` | Filtra las tarjetas por texto y por chip; muestra un mensaje si no hay resultados |
 | Calculadora | `calculadora.html` | Divide ingreso entre miembros, compara con el umbral y cambia color y mensaje del resultado |
+| Mapa de oficinas | `oficinas.html` | "Ver en el mapa" cambia el mapa de Google Maps embebido; los chips filtran por entidad y el buscador ubica la oficina del departamento o municipio elegido |
 | Checklist | `checklist.html` | Al enviar, evalúa reglas simples y lista los programas que podrían aplicar |
 
 Los campos de dinero se formatean con separador de miles mientras se escribe (`700.000`).
